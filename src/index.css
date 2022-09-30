@@ -1,13 +1,191 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
+  user-select: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #999;
+  overflow-y: scroll;
 }
+
+#root > p {
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+#root > p a {
+  font-weight: 900;
+}
+
+.game {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  border: solid 3px #333;
+  background-image: linear-gradient(#4499EE, #225533);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);
+}
+
+.speech-modal,
+.play-again {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 2s, visibility 2s;
+}
+
+.speech-modal.open,
+.play-again.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.speech-modal .instructions {
+  width: 300px;
+  margin-right: 30px;
+  padding: 20px;
+  border: solid 1px #FFF;
+  border-radius: 10px;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.75);
+  font-family: sans-serif;
+}
+
+.speech-modal .instructions h1 {
+  margin-top: 0;
+  font-size: 36px;
+}
+
+.speech-modal .instructions p,
+.speech-modal .start p {
+  font-size: 18px;
+}
+
+.speech-modal .instructions p:last-of-type {
+  margin-bottom: 0;
+}
+
+.start {
+  width: 200px;
+  margin-left: 30px;
+  color: #FFF;
+  font-family: sans-serif;
+}
+
+.play-again button,
+.btn-start {
+  padding: 10px 20px;
+  border: 0;
+  font-family: sans-serif;
+  font-size: 24px;
+  background-color: #FFF;
+  outline: none;
+  cursor: pointer;
+}
+
+.play-again {
+  flex-direction: column;
+  color: #FFF;
+  font-family: sans-serif;
+}
+
+/* https://codepen.io/ceg9498/post/creating-lined-paper */
+/* Styling specific to a sheet of lined paper */
+.sheet{
+  position: relative;
+  top: 100%;
+  font-family: 'Indie Flower', cursive;
+  background-color: white;
+  background: repeating-linear-gradient(white, white 25px, #9198e5 26px, #9198e5 27px);
+  background-position-y: 49px;
+  height: 550px;
+  width: 450px;
+  padding: 0;
+  margin-top: 50px;
+  margin-left: 15px;
+  transition: top 1.5s;
+ }
+
+ .speech-modal.open .sheet {
+  top: 0;
+ }
+
+ .sheet header {
+  background-color: white;
+  background: linear-gradient(white, white 48px, #9198e5 49px, #9198e5 50px);
+  height: 50px;
+ }
+ .sheet-title {
+  position: relative;
+  top: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 10px;
+ }
+ .sheet-text {
+  position: absolute;
+  top: 75px;
+  font-size: 22px;
+  width: 352px;
+  height: 460px;
+  margin: 0;
+  border: 0;
+  line-height: 27px;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  font-family: 'Indie Flower', cursive;
+ }
+ .margin {
+  width: 49px;
+  height: 100%;
+ }
+ .l-margin {
+  float: left;
+  border-right: 2px solid pink;
+ }
+ .r-margin {
+  float: right;
+  border-left: 1px solid pink;
+ }
+ 
+ /* Styling for hole punches */
+ .l-margin {
+  position: relative;
+ }
+ .hole {
+  height: 20px;
+  width: 20px;
+  background-color: #555;
+  border-radius: 50%;
+  position: absolute;
+  left: 15px;
+ }
+ .first-hole {
+  top: 30px;
+ }
+ .second-hole {
+  top: 50%;
+ }
+ .third-hole {
+  bottom: 30px;
+ }
